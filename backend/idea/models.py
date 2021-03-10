@@ -12,12 +12,19 @@ class Idea(models.Model):
         null=True,
         blank=True
     )
+    files = models.FileField(
+        upload_to='idea',
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
         return (self.title + ":" + self.description)
 
     def to_json(self):
         return {
+            'id': self.id,
             'title': self.title,
             'description': self.description,
+            'filepath': str(self.files),
         }
