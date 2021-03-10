@@ -13,9 +13,10 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = Group
         fields = ['url', 'name']
 
-class IdeaSerializer(serializers.HyperlinkedModelSerializer):
+class IdeaSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    text = serializers.CharField(required=True, allow_blank=True, max_length=100)
+    title = serializers.CharField(required=True, allow_blank=False, max_length=150)
+    description = serializers.CharField(required=False, allow_blank=True)
 
     class Meta:
             model = Idea
