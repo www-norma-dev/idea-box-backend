@@ -18,6 +18,9 @@ class IdeaSerializer(serializers.Serializer):
     title = serializers.CharField(required=True, allow_blank=False, max_length=150)
     description = serializers.CharField(required=False, allow_blank=True)
 
+    def create(self, validated_data):
+        return Idea.objects.create(**validated_data)
+
     class Meta:
             model = Idea
             fields = '__all__'
