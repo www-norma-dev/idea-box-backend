@@ -1,5 +1,6 @@
 from django.db import models
 from import_export.admin import ImportExportModelAdmin
+from datetime import date
 
 # Create your models here.
 class Idea(models.Model):
@@ -17,6 +18,10 @@ class Idea(models.Model):
         null=True,
         blank=True,
     )
+    date = models.DateField(
+        auto_now_add=True,
+    )
+
 
     def __str__(self):
         return (self.title + ":" + self.description)
@@ -26,5 +31,6 @@ class Idea(models.Model):
             'id': self.id,
             'title': self.title,
             'description': self.description,
-            'filepath': str(self.files),
+            'filepath': self.files,
+            'date': self.date,
         }
