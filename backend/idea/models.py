@@ -22,9 +22,8 @@ class Idea(models.Model):
         auto_now_add=True,
     )
 
-
     def __str__(self):
-        return (self.title + ":" + self.description)
+        return (self.title)
 
     def to_json(self):
         return {
