@@ -18,6 +18,8 @@ class IdeaSerializer(serializers.Serializer):
     title = serializers.CharField(required=True, allow_blank=False, max_length=150)
     description = serializers.CharField(required=False, allow_blank=True)
     date = serializers.DateField(read_only=True)
+    # This part actually doesn't display when the API is called for some reason. might need more research on FileField
+    # (FR) https://docs.djangoproject.com/fr/3.1/topics/files/
     filepath = serializers.FileField(required=False)
 
     def create(self, validated_data):
