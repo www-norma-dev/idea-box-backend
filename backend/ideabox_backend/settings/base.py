@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     "users",
     'idea.apps.IdeaConfig',
     'corsheaders',
+    #django_cleanup needs to stay as the last app
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 REST_FRAMEWORK = {

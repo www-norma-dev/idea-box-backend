@@ -4,11 +4,12 @@
 
 ## Running
 ### Setup
-- Inside the `backend` folder, do the following:
-- Create a copy of ``ideabox_backend/settings/local.py.example``:  
-  `cp ideabox_backend/settings/local.py.example ideabox_backend/settings/local.py`
-- Create a copy of ``.env.example``:
-  `cp .env.example .env`
+  (This should not be necessary but is kept here just in case)
+- ~~Inside the `backend` folder, do the following:~~
+- ~~Create a copy of ``ideabox_backend/settings/local.py.example``:~~
+  ~~`cp ideabox_backend/settings/local.py.example ideabox_backend/settings/local.py`~~
+- ~~Create a copy of ``.env.example``:~~
+  ~~`cp .env.example .env`~~
 
 #### If you are using plain python:
 - Create the migrations for `users` app: 
@@ -109,12 +110,6 @@ Some settings defaults were decided based on Vinta's experiences. Here's the rat
 
 ### `CELERY_ACKS_LATE = True`
 We believe Celery tasks should be idempotent. So for us it's safe to set `CELERY_ACKS_LATE = True` to ensure tasks will be re-queued after a worker failure. Check Celery docs on ["Should I use retry or acks_late?"](https://docs.celeryproject.org/en/latest/faq.html#should-i-use-retry-or-acks-late) for more info.
-
-## Contributing
-
-If you wish to contribute to this project, please first discuss the change you wish to make via an [issue](https://github.com/vintasoftware/django-react-boilerplate/issues).
-
-Check our [contributing guide](https://github.com/vintasoftware/django-react-boilerplate/blob/master/CONTRIBUTING.md) to learn more about our development process and how you can test your changes to the boilerplate.
 
 ## Commercial Support
 This project, as other Vinta open-source projects, is used in products of Vinta clients. We are always looking for exciting work, so if you need any commercial support, feel free to get in touch: contact@vinta.com.br
