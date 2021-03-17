@@ -2,26 +2,6 @@
 
 # Ideabox backend
 
-## About
-A [Django](https://www.djangoproject.com/) project boilerplate/template with lots of state of the art libraries and tools like:
-- [React](https://facebook.github.io/react/), for building interactive UIs
-- [django-js-reverse](https://github.com/ierror/django-js-reverse), for generating URLs on JS
-- [Bootstrap 4](https://v4-alpha.getbootstrap.com/), for responsive styling
-- [Webpack](https://webpack.js.org/), for bundling static assets
-- [Celery](http://www.celeryproject.org/), for background worker tasks
-- [WhiteNoise](http://whitenoise.evans.io/en/stable/) with [brotlipy](https://github.com/python-hyper/brotlipy), for efficient static files serving
-- [prospector](https://prospector.landscape.io/en/master/) and [ESLint](https://eslint.org/) with [pre-commit](http://pre-commit.com/) for automated quality assurance (does not replace proper testing!)
-
-For continuous integration, a [CircleCI](https://circleci.com/) configuration `.circleci/config.yml` is included.
-
-Also, includes a Heroku `app.json` and a working Django `production.py` settings, enabling easy deployments with ['Deploy to Heroku' button](https://devcenter.heroku.com/articles/heroku-button). Those Heroku plugins are included in `app.json`:
-- PostgreSQL, for DB
-- Redis, for Celery
-- Sendgrid, for e-mail sending
-- Papertrail, for logs and platform errors alerts (must set them manually)
-
-This is a good starting point for modern Python/JavaScript web projects.
-
 ## Running
 ### Setup
 - Inside the `backend` folder, do the following:
@@ -32,9 +12,9 @@ This is a good starting point for modern Python/JavaScript web projects.
 
 #### If you are using plain python:
 - Create the migrations for `users` app: 
-  `python manage.py makemigrations`
+  `python3 manage.py makemigrations`
 - Run the migrations:
-  `python manage.py migrate`
+  `python3 manage.py migrate`
 
 #### If you are using Docker:
 - Create the migrations for `users` app:  
@@ -46,12 +26,8 @@ This is a good starting point for modern Python/JavaScript web projects.
 - Setup [editorconfig](http://editorconfig.org/), [prospector](https://prospector.landscape.io/en/master/) and [ESLint](http://eslint.org/) in the text editor you will use to develop.
 
 ### Running the project (without docker)
-- Open a command line window and go to the project's directory.
-- `pip install -r requirements.txt && pip install -r dev-requirements.txt`
-- `npm install`
-- `npm run start`
-- Open another command line window.
-- `workon theprojectname` or `source theprojectname/bin/activate` depending on if you are using virtualenvwrapper or just virtualenv.
+- Open a command line window.
+- `pip3 install -r requirements.txt && pip install -r dev-requirements.txt`
 - Go to the `backend` directory.
 - `python manage.py runserver`
 
