@@ -13,6 +13,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = Group
         fields = ['url', 'name']
 
+"""
 class IdeaSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(required=True, allow_blank=False, max_length=150)
@@ -26,3 +27,11 @@ class IdeaSerializer(serializers.Serializer):
     class Meta:
             model = Idea
             fields = '__all__'
+"""
+
+
+
+class IdeaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Idea
+        fields = '__all__'
