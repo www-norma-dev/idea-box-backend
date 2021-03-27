@@ -2,6 +2,8 @@
 
 # Ideabox backend
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/www-norma-dev/idea-box-backend)
+
 ## Running
 ### Setup
   (This should not be necessary but is kept here just in case)
