@@ -35,7 +35,7 @@ distlib==0.3.1
     # via virtualenv
 django-naomi==0.8
     # via -r dev-requirements.in
-django==2.2.19
+django==2.2.20
     # via
     #   -r dev-requirements.in
     #   django-naomi
@@ -58,6 +58,12 @@ identify==2.1.0
     # via pre-commit
 idna==2.10
     # via requests
+importlib-metadata==4.0.1
+    # via
+    #   flake8
+    #   pre-commit
+    #   stevedore
+    #   virtualenv
 isort==4.3.21
     # via
     #   -r dev-requirements.in
@@ -158,15 +164,21 @@ toml==0.10.2
     #   pre-commit
     #   pylint
 typed-ast==1.4.2
-    # via black
+    # via
+    #   astroid
+    #   black
 typing-extensions==3.7.4.3
-    # via black
+    # via
+    #   black
+    #   importlib-metadata
 urllib3==1.26.3
     # via requests
 virtualenv==20.4.2
     # via pre-commit
 wrapt==1.12.1
     # via astroid
+zipp==3.4.1
+    # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
