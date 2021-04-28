@@ -1,4 +1,4 @@
-FROM python:3.6-slim
+FROM python:3.8-slim
 
 ENV PYTHONUNBUFFERED 1
 
@@ -10,12 +10,9 @@ RUN apt-get update && apt-get install gcc build-essential libpq-dev -y && \
     python3 -m pip install --no-cache-dir pip-tools
 
 # install python dependencies
-ADD *requirements.in /home/user/app/backend/
-RUN pip-compile requirements.in > requirements.txt && \
-    pip-compile dev-requirements.in > dev-requirements.txt
+ADD *requirements.txt /home/user/app/backend/
 
-RUN pip install -r requirements.txt && \
-    pip install -r dev-requirements.txt
+RUN pip install -r requirements.txt
 
 # Clean the house
 RUN apt-get purge libpq-dev -y && apt-get autoremove -y && \
@@ -24,4 +21,4 @@ RUN apt-get purge libpq-dev -y && apt-get autoremove -y && \
 ADD backend/ /home/user/app/backend
 
 USER user
-CMD gunicorn ideabox_backend.wsgi --log-file - -b 0.0.0.0:8000 --reload
+CMD  gunicorn ideabox_backend.wsgi:application -w 3 --bind 0.0.0.0:8000 --workers 3 --timeout 600 --reload
