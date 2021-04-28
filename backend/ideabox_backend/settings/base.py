@@ -78,7 +78,6 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "common.context_processors.sentry_dsn",
                 "common.context_processors.commit_sha",
             ],
         },
@@ -115,14 +114,5 @@ WEBPACK_LOADER = {
         "IGNORE": [".+\.hot-update.js", ".+\.map"],
     }
 }
+COMMIT_SHA = config("COMMIT_SHA", default="")
 
-# Celery
-CELERY_ACCEPT_CONTENT = ["json"]
-CELERY_TASK_SERIALIZER = "json"
-CELERY_RESULT_SERIALIZER = "json"
-CELERY_ACKS_LATE = True
-CELERY_TIMEZONE = TIME_ZONE
-
-# Sentry
-SENTRY_DSN = config("SENTRY_DSN", default="")
-COMMIT_SHA = config("HEROKU_SLUG_COMMIT", default="")

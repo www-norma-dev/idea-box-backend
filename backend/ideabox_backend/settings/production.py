@@ -1,7 +1,5 @@
-import sentry_sdk
 from decouple import Csv, config
 from dj_database_url import parse as db_url
-from sentry_sdk.integrations.django import DjangoIntegration
 
 from .base import *  # noqa
 
@@ -45,11 +43,6 @@ X_FRAME_OPTIONS = "DENY"
 
 # Webpack
 WEBPACK_LOADER["DEFAULT"]["CACHE"] = True
-
-# Celery
-CELERY_BROKER_URL = config("REDIS_URL")
-CELERY_RESULT_BACKEND = config("REDIS_URL")
-CELERY_SEND_TASK_ERROR_EMAILS = True
 
 # Whitenoise
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
@@ -105,6 +98,3 @@ LOGGING = {
 }
 
 JS_REVERSE_EXCLUDE_NAMESPACES = ["admin"]
-
-# Sentry
-sentry_sdk.init(dsn=SENTRY_DSN, integrations=[DjangoIntegration()], release=COMMIT_SHA)
