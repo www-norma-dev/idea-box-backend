@@ -15,7 +15,7 @@ router.register('idea', IdeaViewset)
 
 urlpatterns = [
                   path('swagger/', schema_view),
-                  path('', include(router.urls)),
+                  path('api/', include(router.urls)),
                   path("admin/", admin.site.urls, name="admin"),
                   path("jsreverse/", django_js_reverse.views.urls_js, name="js_reverse"),
                   path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
