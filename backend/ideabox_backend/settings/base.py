@@ -4,7 +4,6 @@ import os
 
 from decouple import config  # noqa
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
@@ -22,7 +21,7 @@ ADMINS = (("Admin", "foo@example.com"),)
 
 AUTH_USER_MODEL = "users.User"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     "rest_framework",
@@ -39,9 +38,10 @@ INSTALLED_APPS = [
     "users",
     'idea.apps.IdeaConfig',
     'corsheaders',
-    #django_cleanup needs to stay as the last app
+    # django_cleanup needs to stay as the last app
     'django_cleanup.apps.CleanupConfig',
     'rest_framework_swagger',
+    'taggit',
 ]
 
 REST_FRAMEWORK = {
@@ -87,10 +87,10 @@ TEMPLATES = [
 WSGI_APPLICATION = "ideabox_backend.wsgi.application"
 
 AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",},
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator", },
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", },
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator", },
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", },
 ]
 
 LANGUAGE_CODE = "en-us"
@@ -115,4 +115,3 @@ WEBPACK_LOADER = {
     }
 }
 COMMIT_SHA = config("COMMIT_SHA", default="")
-

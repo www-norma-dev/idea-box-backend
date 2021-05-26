@@ -2,7 +2,9 @@ from django.db import models
 from import_export.admin import ImportExportModelAdmin
 from datetime import date
 
-# Create your models here.
+from taggit.managers import TaggableManager
+
+
 class Idea(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.TextField(
@@ -21,9 +23,10 @@ class Idea(models.Model):
     date = models.DateField(
         auto_now_add=True,
     )
+    tags = TaggableManager()
 
     def __str__(self):
-        return (self.title)
+        return self.title
 
     def to_json(self):
         return {

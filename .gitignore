@@ -111,6 +111,7 @@ Pipfile.lock
 # Other stuff
 venv/
 /back/venv
+v-test
 back/
 *.gz
 *.sql
