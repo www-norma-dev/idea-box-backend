@@ -115,3 +115,4 @@ WEBPACK_LOADER = {
     }
 }
 COMMIT_SHA = config("COMMIT_SHA", default="")
+TAGGIT_TAGS_FROM_STRING = 'idea.tags.utils.custom_tag_string'

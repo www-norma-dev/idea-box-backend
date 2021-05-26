@@ -25,6 +25,12 @@ class Idea(models.Model):
     )
     tags = TaggableManager()
 
+    def get_tags(self):
+        """ names() is a django-taggit method, returning a ValuesListQuerySet
+        (basically just an iterable) containing the name of each tag as a string
+        """
+        return self.tags.names()
+
     def __str__(self):
         return self.title
 
@@ -35,4 +41,5 @@ class Idea(models.Model):
             'description': self.description,
             'filepath': self.files,
             'date': self.date,
+            'tags': self.tags
         }

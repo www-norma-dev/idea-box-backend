@@ -12,7 +12,7 @@ django-js-reverse==0.9.1
 django-model-utils==4.1.1
 django-rest-swagger==2.2.0
 django-webpack-loader==0.7.0
-djangorestframework==3.12.4
+djangorestframework
 et-xmlfile==1.1.0
 idna==2.10
 itypes==1.2.0
@@ -36,3 +36,5 @@ xlrd==2.0.1
 xlwt==1.3.0
 gunicorn==19.9.0
 django-taggit
+dynamic-rest==2.0.0
+djangorestframework-queryfields==1.0.0
