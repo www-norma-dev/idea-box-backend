@@ -1,5 +1,6 @@
 def custom_tag_string(tag_string):
     """ takes in a string, returns a list """
+    import pdb;pdb.set_trace()
     if not tag_string:
         return []
     if ',' not in tag_string:

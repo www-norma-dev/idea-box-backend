@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'rest_framework_swagger',
     'taggit',
+    'taggit_serializer',
 ]
 
 REST_FRAMEWORK = {
@@ -115,4 +116,4 @@ WEBPACK_LOADER = {
     }
 }
 COMMIT_SHA = config("COMMIT_SHA", default="")
-TAGGIT_TAGS_FROM_STRING = 'idea.tags.utils.custom_tag_string'
+TAGGIT_TAGS_FROM_STRING = 'ideabox_backend.utils.custom_tag_string'

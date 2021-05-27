@@ -23,13 +23,7 @@ class Idea(models.Model):
     date = models.DateField(
         auto_now_add=True,
     )
-    tags = TaggableManager()
-
-    def get_tags(self):
-        """ names() is a django-taggit method, returning a ValuesListQuerySet
-        (basically just an iterable) containing the name of each tag as a string
-        """
-        return self.tags.names()
+    tags = TaggableManager(blank=True)
 
     def __str__(self):
         return self.title

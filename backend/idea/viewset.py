@@ -1,15 +1,17 @@
-from . import models
-from rest_framework import serializers
+from .models import Idea
+from rest_framework import serializers, viewsets
 
-from rest_framework.serializers import HyperlinkedModelSerializer, ModelSerializer
+from rest_framework.serializers import HyperlinkedModelSerializer
 from drf_queryfields import QueryFieldsMixin
-from dynamic_rest.serializers import DynamicModelSerializer, DynamicRelationField
-from dynamic_rest.viewsets import DynamicModelViewSet
-from rest_framework import viewsets
+from dynamic_rest.serializers import DynamicModelSerializer
+from taggit_serializer.serializers import (TagListSerializerField,
+                                           TaggitSerializer)
+
 
 class TagsField(serializers.Field):
     """ custom field to serialize/deserialize TaggableManager instances.
     """
+
     def to_representation(self, value):
         """ in drf this method is called to convert a custom datatype into a primitive,
         serializable datatype.
@@ -30,38 +32,53 @@ class TagsField(serializers.Field):
         return data
 
 
-class TaskSerializer(serializers.ModelSerializer):
-    tags = TagsField(source="get_tags")
-    # variables = VariableSerializer()
+# class TaskSerializer(serializers.ModelSerializer):
+#     tags = TagsField(source="get_tags")
+#
+#     # variables = VariableSerializer()
+#
+#     def create(self, validated_data):
+#         # using "source=get_tags" drf "thinks" get_tags is a real field name, so the return value of
+#         # to_internal_value() is used a the value of a key called "get_tags" inside validated_data dict. We need to
+#         # remove it and handle the tags manually.
+#         tags = validated_data.pop("get_tags")
+#         task = Idea.objects.create(**validated_data)
+#         task.tags.add(*tags)
+#
+#         return task
+#
+#     class Meta:
+#         model = Idea
+#
+#         fields = [
+#             "title",
+#             "description",
+#             "date",
+#             "tags",
+#         ]
 
-    def create(self, validated_data):
-        # using "source=get_tags" drf "thinks" get_tags is a real field name, so the return value of
-        # to_internal_value() is used a the value of a key called "get_tags" inside validated_data dict. We need to
-        # remove it and handle the tags manually.
-        tags = validated_data.pop("get_tags")
-        task = models.Idea.objects.create(**validated_data)
-        task.tags.add(*tags)
 
-        return task
+# class IdeaSerializer(DynamicModelSerializer, QueryFieldsMixin, HyperlinkedModelSerializer):
+#     class Meta:
+#         model = Idea
+#         fields = ['title', 'tags']
+
+
+class IdeaSerializer(TaggitSerializer, serializers.ModelSerializer):
+    tags = TagListSerializerField()
+
+    # def create(self, validated_data):
+    #     tags = validated_data.pop('tags')
+    #     instance = super(IdeaSerializer, self).create(validated_data)
+    #     instance.tags.set(*tags)
+    #     return instance
 
     class Meta:
-        model = models.Idea
-        # we exclude all those fields we simply receive from Socialminer
-        # whenever we get a task or its status
-        fields = [
-                "title",
-                "description",
-                "date",
-                "tags",
-            ]
+        model = Idea
 
-
-class IdeaSerializer(DynamicModelSerializer, QueryFieldsMixin, HyperlinkedModelSerializer):
-    class Meta:
-        model = models.Idea
-        fields = ['title', 'tags']
+        fields = '__all__'
 
 
 class IdeaViewset(viewsets.ModelViewSet):
-    queryset = models.Idea.objects.all()
-    serializer_class = TaskSerializer
+    queryset = Idea.objects.all().order_by('title')
+    serializer_class = IdeaSerializer
