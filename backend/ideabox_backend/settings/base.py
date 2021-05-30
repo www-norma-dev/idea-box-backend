@@ -22,7 +22,7 @@ ADMINS = (("Admin", "foo@example.com"),)
 
 AUTH_USER_MODEL = "users.User"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     "rest_framework",
@@ -103,7 +103,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATICFILES_DIRS = (base_dir_join("../frontend"),)
 
 # Webpack
 WEBPACK_LOADER = {

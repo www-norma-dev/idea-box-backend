@@ -4,7 +4,7 @@ from django.urls import include, path
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 import django_js_reverse.views
-from idea.viewset import IdeaViewset
+from idea.viewset import IdeaViewset, IdeaStatusViewset
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -12,6 +12,7 @@ router = routers.DefaultRouter()
 schema_view = get_swagger_view(title='idea-box-backend')
 
 router.register('idea', IdeaViewset)
+router.register('idea_status', IdeaStatusViewset)
 
 urlpatterns = [
                   path('swagger/', schema_view),

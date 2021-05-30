@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from idea.models import Idea
+from idea.models import Idea, IdeaStatus
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -15,24 +15,15 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'name']
 
 
-"""
-class IdeaSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
-    title = serializers.CharField(required=True, allow_blank=False, max_length=150)
-    description = serializers.CharField(required=False, allow_blank=True)
-    date = serializers.DateField(read_only=True)
-    files = serializers.FileField(required=False)
-
-    def create(self, validated_data):
-        return Idea.objects.create(**validated_data)
-
-    class Meta:
-            model = Idea
-            fields = '__all__'
-"""
-
-
 class IdeaSerializer(serializers.ModelSerializer):
+    status_name = serializers.CharField(source='status.name', required=False, read_only=True)
+
     class Meta:
         model = Idea
+        fields = '__all__'
+
+
+class IdeaStatusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = IdeaStatus
         fields = '__all__'
