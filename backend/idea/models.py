@@ -47,5 +47,9 @@ class Idea(models.Model):
         blank=True,
     )
 
+    @property
+    def avatar(self):
+        return self.email[0].upper() if self.email else ""
+
     def __str__(self):
         return self.title

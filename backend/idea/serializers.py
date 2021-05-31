@@ -17,6 +17,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 class IdeaSerializer(serializers.ModelSerializer):
     status_name = serializers.CharField(source='status.name', required=False, read_only=True)
+    avatar_name = serializers.CharField(source='avatar', required=False, read_only=True)
 
     class Meta:
         model = Idea
