@@ -11,3 +11,8 @@ class IdeaViewset(viewsets.ModelViewSet):
 class IdeaStatusViewset(viewsets.ModelViewSet):
     queryset = models.IdeaStatus.objects.all()
     serializer_class = serializers.IdeaStatusSerializer
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.CommentSerializer
+    queryset = models.Comment.objects.all()

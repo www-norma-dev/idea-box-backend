@@ -53,3 +53,21 @@ class Idea(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    email = models.EmailField(
+        null=False,
+        blank=False,
+        default=""
+    )
+
+    message = models.TextField(
+        null=True,
+        blank=True
+    )
+
+    idea = models.ForeignKey(Idea, on_delete=models.CASCADE)
