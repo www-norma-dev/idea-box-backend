@@ -9,6 +9,11 @@ class IdeaViewset(viewsets.ModelViewSet):
     serializer_class = serializers.IdeaSerializer
 
 
+class BlogViewset(viewsets.ModelViewSet):
+    queryset = models.Blog.objects.all()
+    serializer_class = serializers.BlogSerializer
+
+
 class IdeaStatusViewset(viewsets.ModelViewSet):
     queryset = models.IdeaStatus.objects.all()
     serializer_class = serializers.IdeaStatusSerializer

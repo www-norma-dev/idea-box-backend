@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from idea.models import Idea, IdeaStatus, Comment
+from idea.models import Idea, IdeaStatus, Comment, Blog
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -21,6 +21,12 @@ class IdeaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Idea
+        fields = '__all__'
+
+
+class BlogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Blog
         fields = '__all__'
 
 

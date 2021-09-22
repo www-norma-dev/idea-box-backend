@@ -1,6 +1,29 @@
 from django.db import models
 
 
+class Blog(models.Model):
+    id = models.AutoField(primary_key=True)
+
+    description = models.TextField(
+        null=True,
+        blank=True
+    )
+    files = models.FileField(
+        upload_to='blog',
+        null=True,
+        blank=True,
+    )
+    # separate with ;
+    title = models.TextField(
+        null=False,
+        blank=False
+    )
+    api_url = models.URLField(
+        null=True,
+        blank=True,
+    )
+
+
 class IdeaStatus(models.Model):
     name = models.CharField(max_length=50)
 
