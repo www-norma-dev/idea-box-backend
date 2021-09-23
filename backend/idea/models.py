@@ -22,6 +22,11 @@ class Blog(models.Model):
         null=False,
         blank=False
     )
+
+    content = models.TextField(
+        null=False,
+        blank=False
+    )
     api_url = models.URLField(
         null=True,
         blank=True,
@@ -72,6 +77,12 @@ class Idea(models.Model):
     app_url = models.URLField(
         null=True,
         blank=True,
+    )
+
+    likes = models.IntegerField(
+        null=False,
+        default=0,
+        blank=True
     )
 
     @property
