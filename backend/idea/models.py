@@ -14,6 +14,10 @@ class Blog(models.Model):
         blank=True,
     )
     # separate with ;
+    tags = models.TextField(
+        null=False,
+        blank=False
+    )
     title = models.TextField(
         null=False,
         blank=False
