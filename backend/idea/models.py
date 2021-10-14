@@ -32,6 +32,12 @@ class Blog(models.Model):
         blank=True,
     )
 
+    html_rapport = models.FileField(
+        upload_to='rapports',
+        null=True,
+        blank=True,
+    )
+
 
 class IdeaStatus(models.Model):
     name = models.CharField(max_length=50)
